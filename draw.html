@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#31150c">
+<title>七鲜 · 抽卡结果</title>
+<style>
+*{box-sizing:border-box}html{background:#22150f}body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif}main{position:relative;width:100%;max-width:480px;aspect-ratio:1125/2436;margin:auto;overflow:hidden;background:#2d160d}img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}.hit{position:absolute;display:block;border:0;padding:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}.hit:focus-visible{outline:3px solid white;outline-offset:3px}.accept{left:27%;top:66.1%;width:46%;height:7.4%;border-radius:999px}.close{left:44%;top:78.4%;width:12%;height:5.5%;border-radius:50%}
+</style>
+</head>
+<body>
+<main aria-label="七鲜抽卡结果">
+<img id="result-art" alt="" width="1125" height="2436">
+<a class="hit accept" href="index.html" aria-label="开心收下，返回主会场"></a>
+<a class="hit close" href="index.html" aria-label="关闭抽卡结果，返回主会场"></a>
+</main>
+<script>
+const results=[
+ {name:'樱桃浓巧',src:'assets/media/2b3c4dcf141f62f66998.png'},
+ {name:'抹茶雪卷',src:'assets/media/80de18c2c487cfee3c11.png'},
+ {name:'焦糖松饼',src:'assets/media/f6bdb133ed17941cd73b.png'},
+ {name:'莓果酸奶',src:'assets/media/7ece00cb604cada8ff65.png'}
+];
+let randomIndex;
+try{const value=new Uint32Array(1);crypto.getRandomValues(value);randomIndex=value[0]%results.length}catch{randomIndex=Math.floor(Math.random()*results.length)}
+const result=results[randomIndex];
+const art=document.getElementById('result-art');
+art.src=result.src;
+art.alt='恭喜成功合成'+result.name+'卡';
+document.title='七鲜 · '+result.name;
+</script>
+</body>
+</html>

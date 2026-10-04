@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ff9628">
+<title>七鲜 · 邀好友集金卡</title>
+<style>
+*{box-sizing:border-box}html{background:#fff2b0;scrollbar-gutter:stable}body{margin:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif}main{position:relative;width:100%;max-width:480px;aspect-ratio:1125/2535;margin:auto;overflow:hidden;background:#fff2b0}img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}.layer{position:absolute;left:0;width:100%}.background{top:0}.status{top:0}.nav{top:5.52%}.heading{top:6.9%}.panel{top:29.35%}.invite-cta{top:63.5%}.home-indicator{bottom:0}.hit{position:absolute;display:block;padding:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}.hit:focus-visible{outline:3px solid #61350b;outline-offset:2px}.back{left:2%;top:5.2%;width:11%;height:4%}.share{right:2%;top:5.2%;width:11%;height:4%}.tab-invite{left:1%;top:29.5%;width:52%;height:5.7%}.tab-team{left:53%;top:29.5%;width:46%;height:5.7%}.call-friends{left:18%;top:63.5%;width:65%;height:8.5%}dialog{width:min(85vw,330px);border:0;border-radius:20px;padding:24px;color:#713411;background:#fffaf0;text-align:center}dialog::backdrop{background:#0006}dialog p{font-size:16px;line-height:1.7}dialog button{border:0;border-radius:22px;background:#ff8c28;color:white;padding:10px 28px;font-size:16px;cursor:pointer}
+</style>
+</head>
+<body>
+<main aria-label="邀请好友集金卡活动">
+<img class="layer background" src="assets/media/08510fa17f0bf5c33737.png" alt="" width="1125" height="2535">
+<img class="layer status" src="assets/media/ef5dea795015363068f6.png" alt="" width="1125" height="132">
+<img class="layer nav" src="assets/media/6e93b2dbbb2cebe4258e.png" alt="" width="1125" height="87">
+<img class="layer heading" src="assets/media/7aee603cba585ea6d532.png" alt="邀请好友集金卡，立得88元券包，特权礼包全天可用" width="1119" height="567">
+<img class="layer panel" src="assets/media/5e2608e8b921bdc0a392.png" alt="我的奖励：10元、28元、50元券包。已邀好友0/3，分享好友、好友领取、一起领好礼。" width="1125" height="1824">
+<img class="layer invite-cta" src="assets/media/2a33ffdfaf02fb4a819e.png" alt="" width="1122" height="231">
+<img class="layer home-indicator" src="assets/media/0297f81d0b4c6a68ee2a.png" alt="" width="1125" height="102">
+<a class="hit back" href="index.html" aria-label="返回主会场"></a>
+<a class="hit share" href="share.html" aria-label="分享活动"></a>
+<button class="hit tab-invite" type="button" aria-label="邀请领券包" aria-current="page"></button>
+<button class="hit tab-team" type="button" aria-label="组队抽好礼"></button>
+<a class="hit call-friends" href="share.html" aria-label="去喊好友，打开分享页"></a>
+</main>
+<dialog id="notice" aria-label="活动提示"><p>组队抽好礼页面尚未提供。</p><form method="dialog"><button>知道了</button></form></dialog>
+<script>document.querySelector('.tab-team').addEventListener('click',()=>document.getElementById('notice').showModal())</script>
+</body>
+</html>

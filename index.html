@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff8c28">
+<meta name="description" content="七鲜集金卡赢好礼，集齐秋日美食卡。">
+<title>七鲜 · 集金卡赢好礼</title>
+<style>
+@font-face{font-family:"HYJieZouHei";src:url("assets/media/69c3d3964b90ebc84f9a.ttf") format("truetype");font-display:swap}
+*{box-sizing:border-box}html{scrollbar-gutter:stable;background:#f5f5f5;scroll-behavior:smooth}body{margin:0;font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;color:#713411}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #67340e;outline-offset:3px}main{position:relative;width:100%;max-width:375px;margin:auto;background:#ffcf62;overflow:hidden;box-shadow:0 0 60px #ab57121a}main>.venue-image{display:block;width:100%;height:auto;pointer-events:none;user-select:none}.hotspot{z-index:10;position:absolute;display:block;padding:0;border:0;background:transparent;border-radius:14px;color:transparent;overflow:hidden}.hotspot:hover,.hotspot:active{background:transparent}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* Hotspots use coordinates from the 1125 × 5808 venue artwork. */
+.back{left:3%;top:2.6%;width:9%;height:1.8%}.share-top{left:87%;top:2.5%;width:11%;height:1.9%}.music{left:3%;top:4.5%;width:9%;height:1.8%}.cart{left:87%;top:4.5%;width:11%;height:1.8%}
+.checkin{left:0%;top:10.7%;width:17%;height:3.2%}.invite{left:0%;top:14.2%;width:17%;height:3.8%;z-index:12}.game{left:83%;top:10.7%;width:17%;height:3.2%}.duel{left:83%;top:14.2%;width:17%;height:3.8%;z-index:12}
+.combine{left:12%;top:27.6%;width:15%;height:3.9%}.shop{left:0%;top:32.3%;width:22%;height:4.5%}.draw{left:25%;top:32.1%;width:50%;height:4.6%}.tasks{left:78%;top:32.3%;width:22%;height:4.5%}
+.claim{left:9%;top:46.7%;width:40%;height:3.1%}.use{left:51%;top:46.7%;width:41%;height:3.1%}.category{width:40%;height:4.7%}.c1{left:7%;top:54.7%}.c2{left:52%;top:54.7%}.c3{left:7%;top:59.5%}.c4{left:52%;top:59.5%}.buy{left:78%;width:17%;height:2.4%}.b1{top:73.1%}.b2{top:80.2%}.b3{top:87.3%}
+#cards{z-index:9;position:absolute;left:0;top:27.4%;width:100%;height:4.1%;pointer-events:none}.card-token{position:absolute;top:12%;width:9%;height:78%;border-radius:12px;background:linear-gradient(#ffed94,#ffc653);border:2px solid #ffce74;display:grid;place-items:center;color:#a95114;font-weight:bold;font-size:clamp(10px,3.2vw,16px);box-shadow:0 3px 8px #e9953330}#remaining{display:none}
+dialog{width:min(88vw,360px);padding:28px;border:0;border-radius:24px;background:#fffaf0;color:#713411;box-shadow:0 20px 90px #63210a33;text-align:center}dialog::backdrop{background:#43230980;backdrop-filter:blur(5px)}dialog h2{margin:0 0 14px;font-size:23px}dialog p{font-size:16px;line-height:1.8;margin:0 0 22px}dialog button{border:0;border-radius:24px;background:linear-gradient(100deg,#ff9425,#ff6330);color:white;padding:12px 35px;font-weight:bold;font-size:16px}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main aria-label="七鲜集金卡活动">
+<h1 class="sr-only">七鲜集金卡赢好礼，集齐秋日美食卡，领88元七鲜券包</h1>
+<img class="venue-image" src="assets/media/35660e2347b0541b2225.png" alt="七鲜集金卡赢好礼活动主会场：集卡、抽卡、优惠券、好物节及蔬果福利" width="1125" height="5808">
+<button class="hotspot back" aria-label="返回顶部" data-action="top"></button>
+<button class="hotspot share-top" aria-label="分享活动" data-action="share"></button>
+<button class="hotspot music" aria-label="活动音乐" data-info="活动音乐" data-message="素材中未提供音乐文件，当前页面没有背景音乐。"></button>
+<button class="hotspot cart" aria-label="购物车" data-info="购物车" data-message="这是页面演示，购物车尚未接入七鲜商城。"></button>
+<button class="hotspot checkin" aria-label="每日签到" data-action="checkin"></button>
+<button class="hotspot invite" type="button" data-action="invite" aria-label="邀请好友，打开邀请好友页面"></button>
+<button class="hotspot game" type="button" aria-label="打开蛋糕投投乐" data-action="game"></button>
+<button class="hotspot duel" aria-label="消消乐" data-info="消消乐" data-message="这是活动页面演示，暂未接入小游戏。"></button>
+<div id="cards" aria-hidden="true"></div>
+<button class="hotspot combine" aria-label="合成美食卡" data-action="combine"></button>
+<button class="hotspot shop" aria-label="兑换商城" data-action="shop"></button>
+<button class="hotspot draw" aria-label="抢好礼，剩余4次" data-action="draw"></button>
+<button class="hotspot tasks" aria-label="任务列表" data-action="tasks"></button>
+<span id="remaining" aria-hidden="true"></span>
+<button class="hotspot claim" aria-label="领全部券" data-info="领取优惠券" data-message="这是页面演示，尚未接入领券服务，不会发放真实优惠券。"></button>
+<button class="hotspot use" aria-label="去使用优惠券" data-info="使用优惠券" data-message="这是页面演示，暂未配置七鲜商城跳转链接。"></button>
+<button class="hotspot category c1" aria-label="生鲜蔬果去抢购" data-action="browse"></button>
+<button class="hotspot category c2" aria-label="超市便利去逛逛" data-action="browse"></button>
+<button class="hotspot category c3" aria-label="外卖到家点外卖" data-action="browse"></button>
+<button class="hotspot category c4" aria-label="品质好物立即抢" data-action="browse"></button>
+<button class="hotspot buy b1" aria-label="选购时令水果" data-action="browse"></button>
+<button class="hotspot buy b2" aria-label="选购新鲜蔬菜" data-action="browse"></button>
+<button class="hotspot buy b3" aria-label="选购时令蔬菜" data-action="browse"></button>
+</main>
+<dialog id="notice" aria-labelledby="notice-title" aria-describedby="notice-message"><h2 id="notice-title"></h2><p id="notice-message"></p><form method="dialog"><button>知道了</button></form></dialog>
+<script>
+  const notice=document.getElementById('notice');
+  const checkinTrigger=document.querySelector('[data-action="checkin"]');
+  const names=['樱桃','浓巧','鲜果','甜点','秋味'];
+  let chances=4,collected=0,checked=false;
+  try{const stored=sessionStorage.getItem('qixian-draw-chances');if(stored!==null)chances=Math.max(0,Math.min(4,Number(stored)||0))}catch{}
+  function show(title,message){document.getElementById('notice-title').textContent=title;document.getElementById('notice-message').textContent=message;notice.showModal()}
+  function update(){const label=document.getElementById('remaining');label.textContent=`剩余 ${chances} 次`;document.querySelector('[data-action="draw"]').setAttribute('aria-label',`抢好礼，剩余${chances}次`)}
+  document.addEventListener('click',event=>{
+    const button=event.target.closest('button');if(!button)return;
+    if(button.dataset.info){show(button.dataset.info,button.dataset.message);return}
+    switch(button.dataset.action){
+      case 'top':window.scrollTo({top:0});break;
+      case 'share':openShare();break;
+      case 'invite':openInvite();break;
+      case 'game':openGame();break;
+      case 'shop':openShop();break;
+      case 'tasks':openTasks();break;
+      case 'browse':show('选购好物','这是页面演示，尚未接入商品和下单服务。');break;
+      case 'draw':
+        if(collected>=5){show('美食卡已集齐','点击合成按钮，体验合成金卡。');break}
+        if(!chances){show('机会已用完','可以通过每日签到增加一次体验机会。');break}
+        chances--;try{sessionStorage.setItem('qixian-draw-chances',String(chances))}catch{}update();openDraw();break;
+      case 'combine':show(collected===5?'合成成功 · 演示':'美食卡还未集齐',collected===5?'五张美食卡已合成金卡！此为交互演示，不会发放真实券包。':`已收集 ${collected}/5 张卡，点击抢好礼继续收集。`);break;
+    }
+  });
+  checkinTrigger.addEventListener('click',event=>{event.stopPropagation();openCheckin()});
+  update();
+  notice.addEventListener('click',event=>{if(event.target===notice){const rect=notice.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)notice.close()}});
+</script>
+<style>#checkin-modal *{box-sizing:border-box}#checkin-modal img{display:block;width:100%;height:auto}#checkin-modal .hotspot{position:absolute;background:transparent;border:0;padding:0;cursor:pointer;-webkit-tap-highlight-color:transparent}#checkin-modal .hotspot:hover,#checkin-modal .hotspot:active{background:transparent}#checkin-modal .hotspot:focus-visible{outline:2px solid white;outline-offset:3px}#checkin-modal .sign{left:28.5%;top:59.63%;width:43%;height:6.82%;border-radius:999px}#checkin-modal .close{left:45%;top:73.94%;width:10%;height:4.02%;border-radius:50%}#checkin-modal .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}#checkin-modal dialog{width:min(85vw,330px);border:0;border-radius:20px;padding:24px;color:#713411;background:#fff9ed;text-align:center}#checkin-modal dialog::backdrop{background:#0005}#checkin-modal dialog p{font-size:16px;line-height:1.7}#checkin-modal dialog button{border:0;border-radius:20px;padding:10px 28px;background:#ff8c28;color:white;font-size:16px;cursor:pointer}#checkin-modal .claimed-day{position:absolute;left:33.066667%;top:39.29%;width:16%;height:auto;pointer-events:none}#checkin-modal .claimed-day[hidden]{display:none}#checkin-modal .reminder-switch{position:absolute;left:78.133333%;top:34.31%;width:7.2%;height:4.31%;padding:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}#checkin-modal .reminder-track{position:absolute;left:0;top:30%;width:100%;height:40%;border-radius:999px;background:#ff7100;transition:background-color .24s ease}#checkin-modal .reminder-knob{position:absolute;top:7%;left:4%;width:44%;height:86%;border-radius:50%;background:white;transform:translateX(109.09%);transition:transform .24s cubic-bezier(.22,.61,.36,1)}#checkin-modal .reminder-switch[aria-checked="false"] .reminder-track{background:#aaa}#checkin-modal .reminder-switch[aria-checked="false"] .reminder-knob{transform:translateX(0)}#checkin-modal .reminder-switch:focus-visible{outline:2px solid #713411;outline-offset:2px;border-radius:8px}#checkin-modal .day-count{position:absolute;left:31.2%;top:35.35%;width:3.55555556%;height:auto;pointer-events:none}#checkin-modal .day-count[hidden]{display:none}
+#checkin-modal{padding:0;border:0;left:0;right:auto;margin-left:0;margin-right:0;width:min(100vw,480px);max-width:100vw;max-height:100dvh;margin:auto 0;background:transparent;border-radius:0;box-shadow:none;overflow-y:auto;scrollbar-width:none;color:#713411;opacity:0;transform:translateY(12px);transition:opacity .24s ease,transform .24s cubic-bezier(.22,.61,.36,1)}
+#checkin-modal.is-open{opacity:1;transform:translateY(0)}
+#checkin-modal::backdrop{background:rgba(0,0,0,.7);opacity:1;backdrop-filter:none;animation:checkin-shade .24s ease}
+@keyframes checkin-shade{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.7)}}
+#checkin-modal .checkin-window{position:relative;aspect-ratio:1125/2436;width:100%;overflow:hidden}
+#checkin-modal .checkin-layer{position:absolute;left:0;width:100%;height:auto;pointer-events:none;user-select:none}
+#checkin-modal .checkin-panel{top:14.20361248%}
+#checkin-modal .checkin-copy{top:25.45155993%}
+#checkin-modal .checkin-grid{top:39.32676519%}
+#checkin-modal .checkin-button-art{top:59.77011494%}
+#checkin-modal .checkin-close-art{top:73.94%}
+@media(prefers-reduced-motion:reduce){#checkin-modal{transition:none}#checkin-modal::backdrop{animation:none}#checkin-modal .reminder-knob{transition:none}}
+</style><dialog id="checkin-modal" aria-label="每日签到"><div class="checkin-window"><img class="checkin-layer checkin-panel" src="assets/media/46988cc41c7599eed6be.png" alt=""><img class="checkin-layer checkin-copy" src="assets/media/5161f64674541916b92e.png" alt="累计签到7天，必得20元优惠券"><img class="checkin-layer checkin-grid" src="assets/media/b35ebee44893efebd405.png" alt="七日签到奖励"><img class="checkin-layer checkin-button-art" src="assets/media/dd31d8cdaccccb878fae.png" alt=""><img class="checkin-layer checkin-close-art" src="assets/media/f23c097f4880a0ce8e32.png" alt=""><button class="hotspot sign" aria-label="立即签到" onclick="claimCheckin()"></button><a class="hotspot close" href="index.html" aria-label="关闭签到弹窗，返回主会场"></a><svg id="claimed-day" class="claimed-day" viewBox="0 0 180 210" hidden aria-label="第二天已领取，奖励15"><svg viewBox="165 0 180 210" width="180" height="210"><image href="assets/media/b35ebee44893efebd405.png" width="1125" height="444"/></svg><rect x="42" y="166" width="96" height="35" fill="#fff8e5"/><text x="90" y="193" text-anchor="middle" font-family="Arial,sans-serif" font-size="30" font-weight="700" fill="#a67850">+15</text><g aria-hidden="true"><circle cx="132" cy="147" r="27" fill="#ffcc00"/><path d="M121 147 L129 155 L144 139" fill="none" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g></svg><p class="sr-only" id="claim-status" role="status"></p><button class="reminder-switch" type="button" role="switch" aria-checked="true" aria-label="签到提醒" onclick="toggleReminder(this)"><span class="reminder-track"><span class="reminder-knob"></span></span></button><span class="sr-only" id="reminder-status" role="status"></span><svg id="day-count" class="day-count" viewBox="0 0 40 55" hidden aria-label="已连续打卡2天"><defs><linearGradient id="count-bg" x2="0" y2="1"><stop stop-color="#feedae"/><stop offset="1" stop-color="#fef1b9"/></linearGradient></defs><rect width="40" height="55" fill="url(#count-bg)"/><text x="14.5" y="42" text-anchor="middle" font-family="Arial,sans-serif" font-size="48" font-weight="700" fill="#ff6100">2</text></svg></div></dialog><script>
+function toggleReminder(button){
+ const enabled=button.getAttribute('aria-checked')!=='true';
+ button.setAttribute('aria-checked',String(enabled));
+ document.getElementById('reminder-status').textContent=enabled?'签到提醒已开启':'签到提醒已关闭';
+ try{localStorage.setItem('qixian-checkin-reminder',String(enabled))}catch{}
+}
+try{if(localStorage.getItem('qixian-checkin-reminder')==='false')document.querySelector('.reminder-switch').setAttribute('aria-checked','false')}catch{}
+
+function claimCheckin(){
+ const tile=document.getElementById('claimed-day');
+ tile.removeAttribute('hidden');
+ document.getElementById('day-count').removeAttribute('hidden');
+ const button=document.querySelector('.sign');
+ button.setAttribute('aria-label','今日已签到');
+ button.disabled=true;
+ document.getElementById('claim-status').textContent='签到成功，已连续打卡2天，第二天奖励15已领取。';
+}
+
+const checkinModal=document.getElementById('checkin-modal');
+let checkinCloseTimer;
+function alignCheckin(){const r=document.querySelector('main').getBoundingClientRect();checkinModal.style.left=r.left+'px';checkinModal.style.width=r.width+'px'}
+window.addEventListener('resize',()=>{if(checkinModal.open)alignCheckin()});
+function openCheckin(){
+ clearTimeout(checkinCloseTimer);
+ document.body.style.overflow='hidden';
+ alignCheckin();
+ checkinModal.showModal();
+ requestAnimationFrame(()=>requestAnimationFrame(()=>checkinModal.classList.add('is-open')));
+}
+function closeCheckin(){
+ checkinModal.classList.remove('is-open');
+ checkinCloseTimer=setTimeout(()=>{checkinModal.close();document.body.style.overflow=''},240);
+}
+checkinModal.querySelector('.close').addEventListener('click',event=>{event.preventDefault();closeCheckin()});
+checkinModal.addEventListener('cancel',event=>{event.preventDefault();closeCheckin()});
+</script>
+<style>
+#draw-modal{padding:0;border:0;left:0;right:auto;margin:auto 0;width:min(100vw,480px);height:100dvh;max-width:100vw;max-height:100dvh;background:transparent;overflow:hidden;opacity:0;transform:translateY(10px);transition:opacity .28s ease,transform .32s cubic-bezier(.22,.61,.36,1)}
+#draw-modal.is-open{opacity:1;transform:translateY(0)}
+#draw-modal::backdrop{background:rgba(0,0,0,.62);animation:draw-shade-in .28s ease}
+#draw-modal .draw-stage{position:absolute;left:0;top:50%;width:100%;aspect-ratio:1125/2436;transform:translateY(-50%);overflow:hidden}
+#draw-modal .draw-layer{position:absolute;left:0;width:100%;height:auto;display:block;pointer-events:none;user-select:none}
+.draw-effect{transform-origin:50% 50%;opacity:.9}.draw-text{top:8%}.draw-subject{transform-origin:50% 55%}.draw-button{top:66.1%}
+#draw-modal.is-open .draw-subject{animation:draw-card-in .72s cubic-bezier(.18,.88,.32,1.2) both}
+#draw-modal.is-open .draw-effect{animation:draw-light-in 1.05s cubic-bezier(.22,.61,.36,1) both,draw-light-loop 4s 1.05s linear infinite}
+#draw-modal .draw-confetti{position:absolute;z-index:1;inset:0;overflow:hidden;pointer-events:none}
+#draw-modal .draw-confetti::before{content:"";position:absolute;left:50%;top:45%;width:8%;aspect-ratio:1;border:5px solid #fff3a8;border-radius:50%;opacity:0;transform:translate(-50%,-50%) scale(.2)}
+#draw-modal.is-open .draw-confetti::before{animation:draw-burst-ring .72s ease-out both}
+#draw-modal .draw-confetti i{position:absolute;left:50%;top:45%;width:2.3%;height:.9%;border-radius:2px;opacity:0;transform-origin:center}
+#draw-modal.is-open .draw-confetti i{animation:draw-confetti-burst 1.05s cubic-bezier(.12,.72,.2,1) var(--delay,0s) both}
+#draw-modal .draw-confetti i:nth-child(6n+1){background:#60e2ee}.draw-confetti i:nth-child(6n+2){background:#ffe47b}.draw-confetti i:nth-child(6n+3){background:#ff5f8f}.draw-confetti i:nth-child(6n+4){background:#8cf1cf}.draw-confetti i:nth-child(6n+5){background:#d98cff}.draw-confetti i:nth-child(6n){background:#ff7658}
+#draw-modal .draw-confetti i:nth-child(1){--x:-1750%;--y:-1050%;--r:-620deg;--delay:.02s}.draw-confetti i:nth-child(2){--x:-1050%;--y:-1550%;--r:520deg;--delay:.08s}.draw-confetti i:nth-child(3){--x:-300%;--y:-1850%;--r:-460deg;--delay:.04s}.draw-confetti i:nth-child(4){--x:550%;--y:-1750%;--r:600deg;--delay:.11s}.draw-confetti i:nth-child(5){--x:1350%;--y:-1250%;--r:-540deg;--delay:.05s}.draw-confetti i:nth-child(6){--x:1850%;--y:-550%;--r:680deg;--delay:.13s}.draw-confetti i:nth-child(7){--x:1950%;--y:250%;--r:-520deg;--delay:.03s}.draw-confetti i:nth-child(8){--x:1550%;--y:950%;--r:570deg;--delay:.1s}.draw-confetti i:nth-child(9){--x:850%;--y:1450%;--r:-650deg;--delay:.06s}.draw-confetti i:nth-child(10){--x:100%;--y:1700%;--r:510deg;--delay:.14s}.draw-confetti i:nth-child(11){--x:-700%;--y:1500%;--r:-590deg;--delay:.04s}.draw-confetti i:nth-child(12){--x:-1450%;--y:1050%;--r:630deg;--delay:.09s}.draw-confetti i:nth-child(13){--x:-1950%;--y:350%;--r:-560deg;--delay:.12s}.draw-confetti i:nth-child(14){--x:-1900%;--y:-350%;--r:490deg;--delay:.06s}.draw-confetti i:nth-child(15){--x:-1250%;--y:-700%;--r:-700deg;--delay:.16s}.draw-confetti i:nth-child(16){--x:1100%;--y:-700%;--r:620deg;--delay:.15s}.draw-confetti i:nth-child(17){--x:1250%;--y:550%;--r:-530deg;--delay:.07s}.draw-confetti i:nth-child(18){--x:-1100%;--y:650%;--r:580deg;--delay:.1s}
+#draw-modal .draw-hit{position:absolute;z-index:2;display:block;border:0;padding:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#draw-modal .draw-hit:focus-visible{outline:3px solid white;outline-offset:3px}
+#draw-modal .draw-accept{left:27%;top:66.1%;width:46%;height:7.4%;border-radius:999px}
+#draw-modal .draw-close{left:44%;top:78.4%;width:12%;height:5.5%;border-radius:50%}
+@keyframes draw-shade-in{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.62)}}
+@keyframes draw-card-in{0%{opacity:0;transform:translateY(12%) scale(.58) rotate(-7deg)}58%{opacity:1;transform:translateY(-1.5%) scale(1.045) rotate(1.2deg)}78%{transform:translateY(.5%) scale(.985) rotate(-.4deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes draw-light-in{0%{opacity:0;transform:scale(.5) rotate(-20deg)}65%{opacity:1;transform:scale(1.08) rotate(4deg)}100%{opacity:.9;transform:scale(1) rotate(0)}}
+@keyframes draw-light-loop{to{transform:rotate(360deg)}}
+@keyframes draw-burst-ring{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}18%{opacity:.95}100%{opacity:0;transform:translate(-50%,-50%) scale(7)}}
+@keyframes draw-confetti-burst{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(0)}12%{opacity:1;transform:translate(-50%,-50%) scale(1.25) rotate(60deg)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(.8) rotate(var(--r))}}
+@media(prefers-reduced-motion:reduce){#draw-modal{transition:none}#draw-modal::backdrop,#draw-modal.is-open .draw-subject,#draw-modal.is-open .draw-effect,#draw-modal.is-open .draw-confetti i{animation:none}}
+</style>
+<dialog id="draw-modal" aria-label="抽卡结果"><div class="draw-stage"><img class="draw-layer draw-effect" alt="" width="1125"><img class="draw-layer draw-text" alt="" width="1125"><img class="draw-layer draw-subject" alt="" width="1125"><img class="draw-layer draw-button" alt="" width="1125" height="432"><span class="draw-confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><button class="draw-hit draw-accept" type="button" aria-label="开心收下"></button><button class="draw-hit draw-close" type="button" aria-label="关闭抽卡结果"></button></div></dialog>
+<script>
+const drawModal=document.getElementById('draw-modal');
+const drawResults=[{name:'樱桃浓巧',effect:'assets/media/bf0ec60f8c6f583bc113.png',text:'assets/media/c55057dde3c79663cc2c.png',subject:'assets/media/54f420feda7749534b07.png',button:'assets/media/3b0645591ed8454f2654.png',subjectTop:'27.83251232%',subjectLeft:'0%',subjectWidth:'100%',effectTop:'12.31527094%',effectLeft:'0%'},{name:'抹茶雪卷',effect:'assets/media/21acf67568c7fbb5df28.png',text:'assets/media/40e9d6b52af864c9d73d.png',subject:'assets/media/86b3e00eb033432845cf.png',button:'assets/media/3b0645591ed8454f2654.png',subjectTop:'25.24630542%',subjectLeft:'0.26666667%',subjectWidth:'99.73333333%',effectTop:'9.60591133%',effectLeft:'0%'},{name:'焦糖松饼',effect:'assets/media/337e009f3b05e4699b70.png',text:'assets/media/91e34bdf255a2ea7fdd7.png',subject:'assets/media/259f730f937ca6c4c0ed.png',button:'assets/media/3b0645591ed8454f2654.png',subjectTop:'15.51724138%',subjectLeft:'0%',subjectWidth:'100%',effectTop:'11.20689655%',effectLeft:'0%'},{name:'莓果酸奶',effect:'assets/media/e11bcdff7e8dec97d646.png',text:'assets/media/2554f717d7aaf9929fec.png',subject:'assets/media/d74d4c17257630436d0f.png',button:'assets/media/3b0645591ed8454f2654.png',subjectTop:'25%',subjectLeft:'0%',subjectWidth:'100%',effectTop:'0%',effectLeft:'0%'}];
+let drawCloseTimer;
+function alignDraw(){const r=document.querySelector('main').getBoundingClientRect();drawModal.style.left=r.left+'px';drawModal.style.width=r.width+'px'}
+function randomDrawIndex(){try{const value=new Uint32Array(1);crypto.getRandomValues(value);return value[0]%drawResults.length}catch{return Math.floor(Math.random()*drawResults.length)}}
+function openDraw(){
+ clearTimeout(drawCloseTimer);
+ const result=drawResults[randomDrawIndex()];
+ const effect=drawModal.querySelector('.draw-effect');effect.src=result.effect;effect.style.top=result.effectTop;effect.style.left=result.effectLeft;
+ drawModal.querySelector('.draw-text').src=result.text;
+ const subject=drawModal.querySelector('.draw-subject');subject.src=result.subject;subject.alt='恭喜成功合成'+result.name+'卡';subject.style.top=result.subjectTop;subject.style.left=result.subjectLeft;subject.style.width=result.subjectWidth;
+ drawModal.querySelector('.draw-button').src=result.button;
+ document.body.style.overflow='hidden';alignDraw();drawModal.showModal();
+ requestAnimationFrame(()=>requestAnimationFrame(()=>drawModal.classList.add('is-open')));
+}
+function closeDraw(){drawModal.classList.remove('is-open');drawCloseTimer=setTimeout(()=>{drawModal.close();document.body.style.overflow=''},320)}
+window.addEventListener('resize',()=>{if(drawModal.open)alignDraw()});
+drawModal.querySelector('.draw-accept').addEventListener('click',closeDraw);
+drawModal.querySelector('.draw-close').addEventListener('click',closeDraw);
+drawModal.addEventListener('cancel',event=>{event.preventDefault();closeDraw()});
+</script>
+
+<style>
+#share-modal{padding:0;border:0;left:0;right:auto;margin:auto 0;width:min(100vw,480px);height:100dvh;max-width:100vw;max-height:100dvh;border-radius:0;background:transparent;box-shadow:none;overflow:hidden;color:#713411;opacity:0;transform:translateY(12px);transition:opacity .24s ease,transform .24s cubic-bezier(.22,.61,.36,1);touch-action:none}
+#share-modal.is-open{opacity:1;transform:translateY(0)}
+#share-modal::backdrop{background:rgba(0,0,0,.8);backdrop-filter:none;animation:share-shade .24s ease}
+@keyframes share-shade{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.8)}}
+#share-modal .share-stage{position:absolute;inset:0;overflow:hidden;touch-action:none}
+#share-modal .share-canvas{position:absolute;left:0;bottom:0;width:100%;aspect-ratio:1125/2436}
+#share-modal img{width:100%;height:auto;display:block;pointer-events:none}
+#share-modal .share-action{position:absolute;top:80.8%;width:18%;height:10%;padding:0;border:0;border-radius:20px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#share-modal .share-action:focus-visible,#share-modal .share-cancel:focus-visible{outline:2px solid #ff7200;outline-offset:2px}
+#share-modal .share-cancel{position:absolute;left:35%;top:92%;width:30%;height:5%;border:0;background:transparent;cursor:pointer}
+#share-modal .share-message{position:absolute;bottom:19%;left:8%;width:84%;padding:8px 12px;border-radius:12px;background:#fffaf0;font-size:14px;line-height:1.5;text-align:center;pointer-events:none}
+#share-modal .share-message:empty{display:none}
+@media(prefers-reduced-motion:reduce){#share-modal{transition:none}#share-modal::backdrop{animation:none}}
+</style>
+<dialog id="share-modal" aria-label="邀请好友分享"><div class="share-stage"><div class="share-canvas" data-share-surface>
+<img src="assets/media/5492adf972617dec90c7.png" alt="七鲜邀好友集金卡分享页" width="1125" height="2436"/>
+<button class="share-action" style="left:3%" data-share-channel="微信" aria-label="分享到微信"></button>
+<button class="share-action" style="left:22%" data-share-channel="朋友圈" aria-label="分享到朋友圈"></button>
+<button class="share-action" style="left:41%" data-share-channel="QQ" aria-label="分享到QQ"></button>
+<a class="share-action" style="left:60%" href="assets/media/5492adf972617dec90c7.png" download="七鲜分享图片.png" aria-label="保存图片"></a>
+<button class="share-action" style="left:79%" id="modal-share-link" aria-label="生成链接"></button>
+<button class="share-cancel" aria-label="取消分享"></button>
+<p class="share-message" role="status"></p></div></div></dialog>
+<script>
+const shareModal=document.getElementById('share-modal');
+let shareCloseTimer;
+function alignShare(){const r=document.querySelector('main').getBoundingClientRect();shareModal.style.left=r.left+'px';shareModal.style.width=r.width+'px'}
+function openShare(){clearTimeout(shareCloseTimer);document.body.style.overflow='hidden';alignShare();shareModal.querySelector('.share-message').textContent='';shareModal.showModal();requestAnimationFrame(()=>requestAnimationFrame(()=>shareModal.classList.add('is-open')))}
+function closeShare(){shareModal.classList.remove('is-open');shareCloseTimer=setTimeout(()=>{shareModal.close();document.body.style.overflow=''},240)}
+window.addEventListener('resize',()=>{if(shareModal.open)alignShare()});
+shareModal.addEventListener('click',e=>{if(e.target.closest('.share-cancel')||e.target===shareModal)closeShare()});
+shareModal.addEventListener('cancel',e=>{e.preventDefault();closeShare()});
+shareModal.addEventListener('wheel',e=>e.preventDefault(),{passive:false});
+shareModal.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+shareModal.querySelectorAll('[data-share-channel]').forEach(b=>b.addEventListener('click',()=>{shareModal.querySelector('.share-message').textContent='请先保存海报，再在'+b.dataset.shareChannel+'中选择图片分享。'}));
+document.getElementById('modal-share-link').addEventListener('click',()=>{shareModal.querySelector('.share-message').textContent='当前为本地预览，尚未配置线上活动链接。'});
+</script>
+<style>#shop-modal *{box-sizing:border-box}#shop-modal img{display:block;width:100%;height:auto;pointer-events:none}#shop-modal .layer{position:absolute}#shop-modal .panel{inset:0}#shop-modal .heading{left:0;top:35.344828%;width:100%}#shop-modal .products{left:.266667%;top:55.91133%;width:99.733333%;aspect-ratio:1122/1074}#shop-modal .close{position:absolute;left:87.4%;top:33.95%;width:8.5%;height:4%;border-radius:50%}#shop-modal .exchange{position:absolute;width:23.53%;height:7.27%;border:0;background:transparent;cursor:pointer;border-radius:999px;padding:0;-webkit-tap-highlight-color:transparent}#shop-modal .exchange:focus-visible,#shop-modal .close:focus-visible{outline:2px solid #713411;outline-offset:3px}#shop-modal .r1{top:34.637%}#shop-modal .r2{top:81.564%}#shop-modal .c1{left:6.15%}#shop-modal .c2{left:38.24%}#shop-modal .c3{left:70.05%}#shop-modal .home-bar{position:absolute;left:31%;bottom:1%;width:38%;height:.62%;border-radius:99px;background:#111}#shop-modal dialog{width:min(85vw,330px);border:0;border-radius:20px;padding:24px;color:#713411;background:#fffaf0;text-align:center}#shop-modal dialog::backdrop{background:#0006}#shop-modal dialog p{font-size:16px;line-height:1.7}#shop-modal dialog button{border:0;border-radius:22px;padding:10px 28px;background:#ff8c28;color:white;font-size:16px;cursor:pointer}
+#shop-modal{padding:0;border:0;max-width:none;max-height:none;margin:0;background:transparent;border-radius:0;box-shadow:none;overflow:hidden;height:100dvh;opacity:0;transition:opacity .26s ease}
+#shop-modal.is-open{opacity:1}
+#shop-modal::backdrop{background:rgba(0,0,0,.62);backdrop-filter:none;animation:panel-shade .26s ease}
+#shop-modal .shop-stage{position:absolute;bottom:0;left:0;width:100%;aspect-ratio:1125/2436;transform:translateY(10%) scale(.985);transform-origin:50% 100%;transition:transform .34s cubic-bezier(.22,.61,.36,1)}
+#shop-modal.is-open .shop-stage{transform:translateY(0) scale(1)}
+#shop-modal .shop-stage>img:first-child{display:block;width:100%;height:auto;pointer-events:none;clip-path:inset(5% 0 0 0)}
+#shop-modal .shop-message{position:absolute;bottom:3%;left:10%;width:80%;padding:12px;background:#fffaf0;border-radius:12px;color:#713411;font-size:14px;text-align:center}
+#shop-modal .shop-message:empty{display:none}
+@keyframes panel-shade{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.62)}}
+@media(prefers-reduced-motion:reduce){#shop-modal{transition:none}#shop-modal .shop-stage{transition:none}#shop-modal::backdrop{animation:none}}
+</style><dialog id="shop-modal" aria-label="兑换商城"><div class="shop-stage"><img class="layer panel" src="assets/media/d528398f84b786fc6ca0.png" alt="" width="1125" height="2436"><img class="layer heading" src="assets/media/d17278b4a2a097011708.png" alt="七鲜秋日兑换单，积分兑好礼" width="1125" height="477"><section class="layer products" aria-label="可兑换商品"><img src="assets/media/07cde420d766b1858017.png" alt="抽卡次数、指定卡、优惠券和场景装扮兑换列表" width="1122" height="1074">
+<button class="exchange r1 c1" aria-label="10积分兑换抽卡次数"></button><button class="exchange r1 c2" aria-label="30积分兑换指定卡"></button><button class="exchange r1 c3" aria-label="30积分兑换优惠券"></button><button class="exchange r2 c1" aria-label="50积分兑换巧克力场景装扮"></button><button class="exchange r2 c2" aria-label="50积分兑换樱桃场景装扮"></button><button class="exchange r2 c3" aria-label="50积分兑换华夫饼场景装扮"></button></section><a class="close" href="index.html" aria-label="关闭兑换商城，返回主会场"></a></div><p class="shop-message" role="status"></p></dialog><script>
+const shopModal=document.getElementById('shop-modal');let shopTimer,shopScrollY=0;
+function alignShop(){const r=document.querySelector('main').getBoundingClientRect();shopModal.style.left=r.left+'px';shopModal.style.width=r.width+'px'}
+window.addEventListener('resize',()=>{if(shopModal.open)alignShop()});
+function lockShopVenue(){shopScrollY=window.scrollY;alignShop();document.body.style.position='fixed';document.body.style.top=`-${shopScrollY}px`;document.body.style.left='0';document.body.style.right='0';document.body.style.width='100%'}
+function unlockShopVenue(){document.body.style.position='';document.body.style.top='';document.body.style.left='';document.body.style.right='';document.body.style.width='';window.scrollTo(0,shopScrollY)}
+function openShop(){clearTimeout(shopTimer);lockShopVenue();shopModal.querySelector('.shop-message').textContent='';shopModal.showModal();requestAnimationFrame(()=>requestAnimationFrame(()=>shopModal.classList.add('is-open')))}
+function closeShop(){shopModal.classList.remove('is-open');shopTimer=setTimeout(()=>{shopModal.close();unlockShopVenue()},340)}
+shopModal.querySelector('.close').addEventListener('click',e=>{e.preventDefault();closeShop()});
+shopModal.addEventListener('cancel',e=>{e.preventDefault();closeShop()});
+shopModal.addEventListener('click',e=>{if(e.target===shopModal)closeShop()});
+shopModal.querySelectorAll('.exchange').forEach(b=>b.addEventListener('click',()=>{shopModal.querySelector('.shop-message').textContent='当前为商城演示，暂未接入真实积分兑换服务。'}));
+</script><style>#tasks-modal *{box-sizing:border-box}#tasks-modal img{display:block;width:100%;height:auto;pointer-events:none}#tasks-modal .layer{position:absolute;left:0;width:100%}#tasks-modal .tasks-panel{top:20.812808%;aspect-ratio:1125/1929}#tasks-modal .heading{top:35.591133%}#tasks-modal .close-art{top:32.26601%}#tasks-modal .close{position:absolute;left:87.5%;top:33.374384%;width:9%;height:4%;border-radius:50%}#tasks-modal .task-action{position:absolute;left:74.666667%;width:18.666667%;height:4.66563%;border:0;padding:0;border-radius:999px;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}#tasks-modal .task-action:focus-visible,#tasks-modal .close:focus-visible{outline:2px solid #713411;outline-offset:3px}#tasks-modal .game{top:70.29549%}#tasks-modal .browse{top:81.80404%}#tasks-modal .share{top:93.312597%}#tasks-modal .home-bar{position:absolute;bottom:1%;left:31%;width:38%;height:.62%;background:#111;border-radius:99px}#tasks-modal dialog{width:min(85vw,330px);border:0;border-radius:20px;padding:24px;color:#713411;background:#fffaf0;text-align:center}#tasks-modal dialog::backdrop{background:#0006}#tasks-modal dialog p{font-size:16px;line-height:1.7}#tasks-modal dialog button{border:0;border-radius:22px;padding:10px 28px;background:#ff8c28;color:white;font-size:16px;cursor:pointer}
+#tasks-modal{padding:0;border:0;max-width:none;max-height:none;margin:0;background:transparent;box-shadow:none;overflow:hidden;height:100dvh;opacity:0;transition:opacity .26s ease}
+#tasks-modal.is-open{opacity:1}
+#tasks-modal::backdrop{background:rgba(0,0,0,.62);backdrop-filter:none;animation:panel-shade .26s ease}
+#tasks-modal .tasks-stage{position:absolute;bottom:0;left:0;width:100%;aspect-ratio:1125/2436;transform:translateY(10%) scale(.985);transform-origin:50% 100%;transition:transform .34s cubic-bezier(.22,.61,.36,1)}
+#tasks-modal.is-open .tasks-stage{transform:translateY(0) scale(1)}
+#tasks-modal .home-bar{display:none}
+#tasks-modal .task-message{position:absolute;bottom:2%;left:10%;width:80%;padding:12px;background:#fffaf0;border-radius:12px;color:#713411;font-size:14px;text-align:center}
+#tasks-modal .task-message:empty{display:none}
+@media(prefers-reduced-motion:reduce){#tasks-modal{transition:none}#tasks-modal .tasks-stage{transition:none}#tasks-modal::backdrop{animation:none}}
+</style><dialog id="tasks-modal" aria-label="任务列表"><div class="tasks-stage"><section class="layer tasks-panel" aria-label="任务列表"><img src="assets/media/2ca843df8324470a5b82.png" alt="完成今日首单，抽卡券加2，已完成。玩一次小游戏，抽卡券加1，已完成。连玩5局游戏，抽卡券加2，进度1/5。逛逛精选好物15秒，抽卡券加1。分享活动领好礼，抽卡券加1。" width="1125" height="1929"><button class="task-action game" aria-label="连玩5局游戏，去完成" data-message="当前为演示页面，暂未接入小游戏。"></button><button class="task-action browse" aria-label="逛逛精选好物15秒，去浏览" data-message="当前为演示页面，暂未配置精选好物链接。"></button><a class="task-action share" href="share.html" aria-label="分享活动领好礼，去分享"></a></section><img class="layer heading" src="assets/media/eaca977f7eb83294e605.png" alt="秋日收获单，每日任务，福气累积" width="1125" height="429"><img class="layer close-art" src="assets/media/4b34dcae60a63d7ea573.png" alt="" width="1125" height="1680"><a class="close" href="index.html" aria-label="关闭任务列表，返回主会场"></a></div><p class="task-message" role="status"></p></dialog><script>
+const tasksModal=document.getElementById('tasks-modal');let tasksTimer;
+function alignTasks(){const r=document.querySelector('main').getBoundingClientRect();tasksModal.style.left=r.left+'px';tasksModal.style.width=r.width+'px'}
+function openTasks(){clearTimeout(tasksTimer);document.body.style.overflow='hidden';alignTasks();tasksModal.querySelector('.task-message').textContent='';tasksModal.showModal();requestAnimationFrame(()=>requestAnimationFrame(()=>tasksModal.classList.add('is-open')))}
+function closeTasks(after){tasksModal.classList.remove('is-open');tasksTimer=setTimeout(()=>{tasksModal.close();document.body.style.overflow='';if(after)after()},340)}
+window.addEventListener('resize',()=>{if(tasksModal.open)alignTasks()});
+tasksModal.querySelector('.close').addEventListener('click',e=>{e.preventDefault();closeTasks()});
+tasksModal.addEventListener('cancel',e=>{e.preventDefault();closeTasks()});
+tasksModal.addEventListener('click',e=>{const r=tasksModal.querySelector('.tasks-stage').getBoundingClientRect();if(e.target===tasksModal||(e.clientY<r.top+r.width*1050/1125&&!e.target.closest('button,a')))closeTasks()});
+tasksModal.querySelectorAll('[data-message]').forEach(b=>b.addEventListener('click',()=>{tasksModal.querySelector('.task-message').textContent=b.dataset.message}));
+tasksModal.querySelector('.share').addEventListener('click',e=>{e.preventDefault();closeTasks(openShare)});
+</script><style>
+#invite-modal{position:fixed;top:0;bottom:auto;padding:0;border:0;left:0;right:auto;margin:0;width:min(100vw,480px);max-width:100vw;height:100dvh;max-height:100dvh;border-radius:0;background:transparent;box-shadow:none;overflow-y:auto;scrollbar-width:none;color:#713411;opacity:0;transform:translateY(12px);transition:opacity .28s ease,transform .32s cubic-bezier(.22,.61,.36,1)}
+#invite-modal.is-open{opacity:1;transform:translateY(0)}
+#invite-modal::backdrop{background:rgba(0,0,0,.6980392157);backdrop-filter:none;animation:checkin-shade .24s ease}
+#invite-modal .invite-stage{position:relative;width:100%;aspect-ratio:1125/2535;overflow:hidden;background:#fff2b0}
+#invite-modal img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
+#invite-modal .layer{position:absolute;left:0;width:100%}
+#invite-modal .background,#invite-modal .status{top:0}
+#invite-modal .nav{top:5.52%}#invite-modal .heading{top:6.9%}#invite-modal .panel{top:29.35%}#invite-modal .invite-cta{top:63.5%}#invite-modal .home-indicator{bottom:0}
+#invite-modal .hit{position:absolute;display:block;padding:0;border:0;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+#invite-modal .hit:focus-visible{outline:3px solid #61350b;outline-offset:2px}
+#invite-modal .back{left:2%;top:5.2%;width:11%;height:4%}#invite-modal .share{right:2%;top:5.2%;width:11%;height:4%}
+#invite-modal .tab-invite{left:1%;top:29.5%;width:52%;height:5.7%}#invite-modal .tab-team{left:53%;top:29.5%;width:46%;height:5.7%}
+#invite-modal .call-friends{left:18%;top:63.5%;width:65%;height:8.5%}
+@media(prefers-reduced-motion:reduce){#invite-modal{transition:none}#invite-modal::backdrop{animation:none}}
+</style>
+<dialog id="invite-modal" aria-label="邀请好友集金卡"><div class="invite-stage">
+<img class="layer background" src="assets/media/08510fa17f0bf5c33737.png" alt="" width="1125" height="2535">
+<img class="layer status" src="assets/media/ef5dea795015363068f6.png" alt="" width="1125" height="132">
+<img class="layer nav" src="assets/media/6e93b2dbbb2cebe4258e.png" alt="" width="1125" height="87">
+<img class="layer heading" src="assets/media/7aee603cba585ea6d532.png" alt="邀请好友集金卡，立得88元券包，特权礼包全天可用" width="1119" height="567">
+<img class="layer panel" src="assets/media/5e2608e8b921bdc0a392.png" alt="我的奖励：10元、28元、50元券包。已邀好友0/3，分享好友、好友领取、一起领好礼。" width="1125" height="1824">
+<img class="layer invite-cta" src="assets/media/2a33ffdfaf02fb4a819e.png" alt="" width="1122" height="231">
+<img class="layer home-indicator" src="assets/media/0297f81d0b4c6a68ee2a.png" alt="" width="1125" height="102">
+<button class="hit back" type="button" aria-label="返回主会场"></button>
+<button class="hit share" type="button" aria-label="分享活动"></button>
+<button class="hit tab-invite" type="button" aria-label="邀请领券包" aria-current="page"></button>
+<button class="hit tab-team" type="button" aria-label="组队抽好礼"></button>
+<button class="hit call-friends" type="button" aria-label="去喊好友，打开分享页"></button>
+</div></dialog>
+<script>
+const inviteModal=document.getElementById('invite-modal');let inviteCloseTimer;
+function alignInvite(){const r=document.querySelector('main').getBoundingClientRect();inviteModal.style.left=r.left+'px';inviteModal.style.width=r.width+'px'}
+function openInvite(){clearTimeout(inviteCloseTimer);document.body.style.overflow='hidden';alignInvite();inviteModal.showModal();requestAnimationFrame(()=>requestAnimationFrame(()=>inviteModal.classList.add('is-open')))}
+function closeInvite(after){inviteModal.classList.remove('is-open');inviteCloseTimer=setTimeout(()=>{inviteModal.close();document.body.style.overflow='';if(after)after()},320)}
+window.addEventListener('resize',()=>{if(inviteModal.open)alignInvite()});
+inviteModal.querySelector('.back').addEventListener('click',()=>closeInvite());
+inviteModal.querySelector('.share').addEventListener('click',()=>closeInvite(openShare));
+inviteModal.querySelector('.call-friends').addEventListener('click',()=>closeInvite(openShare));
+inviteModal.querySelector('.tab-team').addEventListener('click',()=>show('组队抽好礼','组队抽好礼页面尚未提供。'));
+inviteModal.addEventListener('cancel',e=>{e.preventDefault();closeInvite()});
+inviteModal.addEventListener('click',e=>{if(e.target===inviteModal)closeInvite()});
+</script>
+<style>
+#game-screen{display:block;position:fixed;z-index:1000;top:0;left:0;width:375px;max-width:100vw;height:min(812px,100dvh);background:transparent;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transform:translate3d(0,8px,0);transition:opacity .2s ease,transform .24s cubic-bezier(.22,.61,.36,1),visibility 0s linear .24s;will-change:opacity,transform;contain:strict;box-shadow:0 0 0 100vmax #f5f5f5}
+#game-screen.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translate3d(0,0,0);transition-delay:0s}
+#game-screen iframe{display:block;width:100%;height:100%;border:0;background:#ced8d6;transform:translateZ(0);backface-visibility:hidden}
+@media(prefers-reduced-motion:reduce){#game-screen{transition:none}}
+</style>
+<section id="game-screen" role="dialog" aria-modal="true" aria-hidden="true" aria-label="蛋糕投投乐"><iframe title="蛋糕投投乐 V048" src="toutoule-v048.html" loading="eager"></iframe></section>
+<script>
+const gameScreen=document.getElementById('game-screen');let gameCloseTimer;
+function alignGame(){const r=document.querySelector('main').getBoundingClientRect();const width=Math.ceil(r.right)-Math.floor(r.left),height=Math.min(812,window.innerHeight);gameScreen.style.left=Math.floor(r.left)+'px';gameScreen.style.width=width+'px';gameScreen.style.height=height+'px';gameScreen.style.top=Math.max(0,Math.floor((window.innerHeight-height)/2))+'px'}
+function openGame(){clearTimeout(gameCloseTimer);alignGame();document.body.style.overflow='hidden';gameScreen.setAttribute('aria-hidden','false');requestAnimationFrame(()=>gameScreen.classList.add('is-open'))}
+function closeGame(){gameScreen.classList.remove('is-open');gameScreen.setAttribute('aria-hidden','true');gameCloseTimer=setTimeout(()=>{document.body.style.overflow=''},240)}
+alignGame();window.addEventListener('resize',alignGame);
+window.addEventListener('message',event=>{if(event.source===gameScreen.querySelector('iframe').contentWindow&&event.data?.type==='qixian-close-game')closeGame()});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&gameScreen.classList.contains('is-open'))closeGame()});
+</script>
+</body>
+</html>
